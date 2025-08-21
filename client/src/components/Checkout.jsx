@@ -11,8 +11,8 @@ export default function Checkout() {
 
         const tossPayments = await loadWidget();
         const paymentWidget = tossPayments.widgets({customerKey: 'anonymous'});
-        paymentWidget.renderPaymentMethods('#payment-method', {value: amount});
-        paymentWidget.renderAgreement('#agreement');
+        await paymentWidget.renderPaymentMethods('#payment-method', {value: amount});
+        await paymentWidget.renderAgreement({ selector: '#agreement' });
 
         await paymentWidget.requestPayment({
             orderId,
